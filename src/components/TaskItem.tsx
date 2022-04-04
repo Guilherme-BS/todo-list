@@ -1,23 +1,21 @@
 import React from 'react';
 
-interface ItemName {
-  name: string;
-  key: string;
+interface TaskItemProps {
+  taskName: string;
 }
 
-export default function TaskItem({ name, key }: ItemName) {
+export default function TaskItem({ taskName }: TaskItemProps) {
   return (
     <li className="todo-stack-small">
       <div className="c-cb">
-        <input id={key} type="checkbox" />
+        <input type="checkbox" />
         <label className="todo-label" htmlFor="todo-0">
-          {name}
+          {taskName}
         </label>
       </div>
       <div className="btn-group">
         <button type="button" className="btn">
-          save
-          <span className="visually-hidden" />
+          Save <span className="visually-hidden" />
         </button>
         <button type="button" className="btn btn__danger">
           Delete <span className="visually-hidden" />

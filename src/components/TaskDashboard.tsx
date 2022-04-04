@@ -1,11 +1,12 @@
 import React from 'react';
 import TaskItem from './TaskItem';
+import { ITask } from './interface/ITask';
 
-interface ListType {
-  taskList: string[];
+interface TaskDashboardProps {
+  taskList: ITask[];
 }
 
-function TaskDashboard({ taskList }: ListType) {
+function TaskDashboard({ taskList }: TaskDashboardProps) {
   return (
     <>
       <div className="filters btn-group stack-exception">
@@ -30,8 +31,8 @@ function TaskDashboard({ taskList }: ListType) {
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading"
       >
-        {taskList.map((name: string) => (
-          <TaskItem key={name} name={name} />
+        {taskList.map((task) => (
+          <TaskItem key={task.id} taskName={task.value} />
         ))}
       </ul>
     </>

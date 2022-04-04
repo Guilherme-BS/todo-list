@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { ITask } from './interface/ITask';
 
-interface ListStateType {
-  taskList: string[];
-  setTaskList: (value: string[]) => void;
+interface AddItemTypeProps {
+  taskList: ITask[];
+  setTaskList: (value: ITask[]) => void;
 }
-function AddItemForm({ taskList, setTaskList }: ListStateType) {
+
+function AddItemForm({ taskList, setTaskList }: AddItemTypeProps) {
   const [inputValue, setInputValue] = useState<string>('');
 
-  const handleInputText = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (inputValue !== '') {
-      setTaskList([...taskList, inputValue]);
+    if (inputValue) {
+      setTaskList([...taskList, { value: inputValue, id: uuidv4() }]);
       setInputValue('');
     }
   };
 
   return (
-    <form onSubmit={handleInputText}>
+    <form onSubmit={handleSubmit}>
       <h2 className="label-wrapper">
         <label htmlFor="new-todo-input" className="label__lg">
           Lista de tarefas PodCodar
