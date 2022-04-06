@@ -7,10 +7,15 @@ import { ITask } from './components/interface/ITask';
 
 function App() {
   const [taskList, setTaskList] = useState<ITask[]>([]);
+
+  const addTask = (task: string, newKey: string): void => {
+    setTaskList([...taskList, { value: task, id: newKey }]);
+  };
+
   return (
     <div className="todoapp stack-large">
       <Title />
-      <AddItemForm setTaskList={setTaskList} taskList={taskList} />
+      <AddItemForm addTask={addTask} />
       <TaskDashboard taskList={taskList} />
     </div>
   );

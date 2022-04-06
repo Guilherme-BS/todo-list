@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { ITask } from './interface/ITask';
 
-interface AddItemTypeProps {
-  taskList: ITask[];
-  setTaskList: (value: ITask[]) => void;
+interface AddItemFormsProps {
+  addTask: (task: string, newKey: string) => void;
 }
-
-function AddItemForm({ taskList, setTaskList }: AddItemTypeProps) {
+function AddItemForm({ addTask }: AddItemFormsProps) {
   const [inputValue, setInputValue] = useState<string>('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputValue) {
-      setTaskList([...taskList, { value: inputValue, id: uuidv4() }]);
+      addTask(inputValue, uuidv4());
       setInputValue('');
     }
   };
