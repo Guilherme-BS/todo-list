@@ -5,9 +5,18 @@ import { ITask } from '../types';
 interface TaskDashboardProps {
   taskList: ITask[];
   deleteTask: (value: string) => void;
+  editButtonValue: string;
+  startEditing: (id: string, value: string) => void;
+  editTask: (value: string) => void;
 }
 
-function TaskDashboard({ taskList, deleteTask }: TaskDashboardProps) {
+function TaskDashboard({
+  taskList,
+  deleteTask,
+  editButtonValue,
+  startEditing,
+  editTask,
+}: TaskDashboardProps) {
   return (
     <>
       <div className="filters btn-group stack-exception">
@@ -37,6 +46,10 @@ function TaskDashboard({ taskList, deleteTask }: TaskDashboardProps) {
             key={task.id}
             taskName={task.value}
             deleteTask={() => deleteTask(task.id)}
+            editButtonValue={editButtonValue}
+            id={task.id}
+            startEditing={() => startEditing(task.id, task.value)}
+            editTask={() => editTask(task.id)}
           />
         ))}
       </ul>

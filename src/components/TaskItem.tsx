@@ -1,22 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 interface TaskItemProps {
   taskName: string;
   deleteTask: () => void;
+  editButtonValue: string;
+  id: string;
+  startEditing: () => void;
+  editTask: () => void;
 }
 
-export default function TaskItem({ taskName, deleteTask }: TaskItemProps) {
-  const [edit, setEdit] = useState<boolean>(false);
-
+export default function TaskItem({
+  taskName,
+  deleteTask,
+  editButtonValue,
+  id,
+  startEditing,
+  editTask,
+}: TaskItemProps) {
   return (
     <li className="todo-stack-small">
       <div className="c-cb">
         <input type="checkbox" />
-        <p className="todo-p">{taskName}</p>
+        <label className="todo-p">{taskName}</label>
       </div>
       <div className="btn-group">
-        <button type="button" className="btn" onClick={() => setEdit(!edit)}>
-          {edit ? 'Save' : 'Edit'}
+        <button
+          type="button"
+          className="btn"
+          onClick={editButtonValue === id ? editTask : startEditing}
+        >
+          {editButtonValue === id ? 'Save' : 'Edit'}
           <span className="visually-hidden" />
         </button>
         <button type="button" className="btn btn__danger" onClick={deleteTask}>

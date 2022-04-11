@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 interface AddItemFormsProps {
   addTask: (task: string, newKey: string) => void;
+  inputValue: string;
+  setInputValue: (value: string) => void;
+  editTask: (value: string) => void;
+  editButtonValue: string;
 }
-function AddItemForm({ addTask }: AddItemFormsProps) {
-  const [inputValue, setInputValue] = useState<string>('');
-
+function AddItemForm({
+  addTask,
+  inputValue,
+  setInputValue,
+  editTask,
+  editButtonValue,
+}: AddItemFormsProps) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (editButtonValue.length > 0) {
+      editTask(editButtonValue);
+      return;
+    }
     if (inputValue.length > 0) {
       addTask(inputValue, uuidv4());
       setInputValue('');
@@ -32,7 +44,7 @@ function AddItemForm({ addTask }: AddItemFormsProps) {
         onChange={(e) => setInputValue(e.target.value)}
       />
       <button type="submit" className="btn btn__primary btn__lg">
-        Add Task
+        {editButtonValue.length > 0 ? 'Save' : 'Add Task'}
       </button>
     </form>
   );
