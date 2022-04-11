@@ -9,7 +9,7 @@ function AddItemForm({ addTask }: AddItemFormsProps) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (inputValue) {
+    if (inputValue.length > 0) {
       addTask(inputValue, uuidv4());
       setInputValue('');
     }

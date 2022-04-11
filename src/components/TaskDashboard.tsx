@@ -1,6 +1,6 @@
 import React from 'react';
 import TaskItem from './TaskItem';
-import { ITask } from './interface/ITask';
+import { ITask } from '../types/ITask';
 
 interface TaskDashboardProps {
   taskList: ITask[];
