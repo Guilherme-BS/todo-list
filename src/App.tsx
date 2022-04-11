@@ -3,7 +3,7 @@ import './App.css';
 import Title from './components/Title';
 import AddItemForm from './components/AddItemForm';
 import TaskDashboard from './components/TaskDashboard';
-import { ITask } from './types/ITask';
+import { ITask } from './types';
 
 function App() {
   const [taskList, setTaskList] = useState<ITask[]>([]);
