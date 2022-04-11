@@ -11,11 +11,17 @@ function App() {
   const addTask = (task: string, newKey: string): void => {
     setTaskList([...taskList, { value: task, id: newKey }]);
   };
+
+  const deleteTask = (index: number) => {
+    taskList.splice(index, 1);
+    setTaskList([...taskList]);
+  };
+
   return (
     <div className="todoapp stack-large">
       <Title />
       <AddItemForm addTask={addTask} />
-      <TaskDashboard taskList={taskList} />
+      <TaskDashboard taskList={taskList} deleteTask={deleteTask} />
     </div>
   );
 }

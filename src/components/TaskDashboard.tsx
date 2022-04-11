@@ -4,9 +4,10 @@ import { ITask } from '../types';
 
 interface TaskDashboardProps {
   taskList: ITask[];
+  deleteTask: (value: number) => void;
 }
 
-function TaskDashboard({ taskList }: TaskDashboardProps) {
+function TaskDashboard({ taskList, deleteTask }: TaskDashboardProps) {
   return (
     <>
       <div className="filters btn-group stack-exception">
@@ -31,8 +32,13 @@ function TaskDashboard({ taskList }: TaskDashboardProps) {
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading"
       >
-        {taskList.map((task) => (
-          <TaskItem key={task.id} taskName={task.value} />
+        {taskList.map((task, index) => (
+          <TaskItem
+            key={task.id}
+            taskName={task.value}
+            index={index}
+            deleteTask={deleteTask}
+          />
         ))}
       </ul>
     </>

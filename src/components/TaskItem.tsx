@@ -2,9 +2,15 @@ import React from 'react';
 
 interface TaskItemProps {
   taskName: string;
+  index: number;
+  deleteTask: (value: number) => void;
 }
 
-export default function TaskItem({ taskName }: TaskItemProps) {
+export default function TaskItem({
+  taskName,
+  index,
+  deleteTask,
+}: TaskItemProps) {
   return (
     <li className="todo-stack-small">
       <div className="c-cb">
@@ -15,9 +21,13 @@ export default function TaskItem({ taskName }: TaskItemProps) {
       </div>
       <div className="btn-group">
         <button type="button" className="btn">
-          Save <span className="visually-hidden" />
+          Edit <span className="visually-hidden" />
         </button>
-        <button type="button" className="btn btn__danger">
+        <button
+          type="button"
+          className="btn btn__danger"
+          onClick={() => deleteTask(index)}
+        >
           Delete <span className="visually-hidden" />
         </button>
       </div>
