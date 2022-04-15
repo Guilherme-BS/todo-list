@@ -12,9 +12,9 @@ function App() {
     setTaskList([...taskList, { value: task, id: newKey }]);
   };
 
-  const deleteTask = (index: number) => {
-    taskList.splice(index, 1);
-    setTaskList([...taskList]);
+  const deleteTask = (id: string) => {
+    console.log(taskList);
+    setTaskList(taskList.filter((taskObject) => taskObject.id !== id));
   };
 
   return (
