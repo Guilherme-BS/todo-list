@@ -4,9 +4,10 @@ import { ITask } from '../types';
 
 interface TaskDashboardProps {
   taskList: ITask[];
+  deleteTask: (value: string) => void;
 }
 
-function TaskDashboard({ taskList }: TaskDashboardProps) {
+function TaskDashboard({ taskList, deleteTask }: TaskDashboardProps) {
   return (
     <>
       <div className="filters btn-group stack-exception">
@@ -32,7 +33,11 @@ function TaskDashboard({ taskList }: TaskDashboardProps) {
         aria-labelledby="list-heading"
       >
         {taskList.map((task) => (
-          <TaskItem key={task.id} taskName={task.value} />
+          <TaskItem
+            key={task.id}
+            taskName={task.value}
+            deleteTask={() => deleteTask(task.id)}
+          />
         ))}
       </ul>
     </>
