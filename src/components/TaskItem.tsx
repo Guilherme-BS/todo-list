@@ -6,40 +6,17 @@ interface TaskItemProps {
 }
 
 export default function TaskItem({ taskName, deleteTask }: TaskItemProps) {
-  const [inputEdit, setInputEdit] = useState<string>(taskName);
-  const [editando, setEditando] = useState<boolean>(false);
-
-  const handleEdit = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setInputEdit(e.target.value);
-  };
-  const togleEdit = () => {
-    setEditando(!editando);
-  };
+  const [edit, setEdit] = useState<boolean>(false);
 
   return (
     <li className="todo-stack-small">
       <div className="c-cb">
         <input type="checkbox" />
-        {editando ? (
-          <input
-            type="text"
-            value={inputEdit}
-            id="new-todo-input"
-            className="input input__lg"
-            name="new-todo-input"
-            autoComplete="off"
-            onChange={handleEdit}
-          />
-        ) : (
-          <label className="todo-label" htmlFor="todo-0">
-            {taskName}
-          </label>
-        )}
+        <p className="todo-p">{taskName}</p>
       </div>
       <div className="btn-group">
-        <button type="button" className="btn" onClick={togleEdit}>
-          {editando ? 'Save' : 'Edit'}
+        <button type="button" className="btn" onClick={() => setEdit(!edit)}>
+          {edit ? 'Save' : 'Edit'}
           <span className="visually-hidden" />
         </button>
         <button type="button" className="btn btn__danger" onClick={deleteTask}>

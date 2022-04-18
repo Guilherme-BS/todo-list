@@ -13,7 +13,6 @@ function App() {
   };
 
   const deleteTask = (id: string) => {
-    console.log(taskList);
     setTaskList(taskList.filter((taskObject) => taskObject.id !== id));
   };
 
