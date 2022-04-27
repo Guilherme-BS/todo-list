@@ -7,9 +7,29 @@ import { ITask } from './types';
 
 function App() {
   const [taskList, setTaskList] = useState<ITask[]>([]);
+  const [editingIdValue, setEditingIdValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>('');
 
   const addTask = (task: string, newKey: string): void => {
     setTaskList([...taskList, { value: task, id: newKey }]);
+  };
+
+  const startEditing = (id: string, task: string) => {
+    setEditingIdValue(id);
+    setInputValue(task);
+  };
+
+  const editTask = (id: string) => {
+    setTaskList(
+      taskList.map((task) => {
+        if (task.id === id) {
+          return { ...task, value: inputValue };
+        }
+        return task;
+      }),
+    );
+    setInputValue('');
+    setEditingIdValue('');
   };
 
   const deleteTask = (id: string) => {
@@ -19,8 +39,20 @@ function App() {
   return (
     <div className="todoapp stack-large">
       <Title />
-      <AddItemForm addTask={addTask} />
-      <TaskDashboard taskList={taskList} deleteTask={deleteTask} />
+      <AddItemForm
+        addTask={addTask}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        editTask={editTask}
+        editingIdValue={editingIdValue}
+      />
+      <TaskDashboard
+        taskList={taskList}
+        deleteTask={deleteTask}
+        editingIdValue={editingIdValue}
+        startEditing={startEditing}
+        editTask={editTask}
+      />
     </div>
   );
 }
