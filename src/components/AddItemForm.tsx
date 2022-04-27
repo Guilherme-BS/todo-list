@@ -6,14 +6,14 @@ interface AddItemFormsProps {
   inputValue: string;
   setInputValue: (value: string) => void;
   editTask: (value: string) => void;
-  editButtonValue: string;
+  editingIdValue: string;
 }
 function AddItemForm({
   addTask,
   inputValue,
   setInputValue,
   editTask,
-  editButtonValue,
+  editingIdValue: editButtonValue,
 }: AddItemFormsProps) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

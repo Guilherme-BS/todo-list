@@ -5,7 +5,7 @@ import { ITask } from '../types';
 interface TaskDashboardProps {
   taskList: ITask[];
   deleteTask: (value: string) => void;
-  editButtonValue: string;
+  editingIdValue: string;
   startEditing: (id: string, value: string) => void;
   editTask: (value: string) => void;
 }
@@ -13,7 +13,7 @@ interface TaskDashboardProps {
 function TaskDashboard({
   taskList,
   deleteTask,
-  editButtonValue,
+  editingIdValue: editButtonValue,
   startEditing,
   editTask,
 }: TaskDashboardProps) {

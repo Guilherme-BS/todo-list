@@ -7,7 +7,7 @@ import { ITask } from './types';
 
 function App() {
   const [taskList, setTaskList] = useState<ITask[]>([]);
-  const [editButtonValue, setEditButtonValue] = useState<string>('');
+  const [editingIdValue, setEditingIdValue] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
 
   const addTask = (task: string, newKey: string): void => {
@@ -15,7 +15,7 @@ function App() {
   };
 
   const startEditing = (id: string, task: string) => {
-    setEditButtonValue(id);
+    setEditingIdValue(id);
     setInputValue(task);
   };
 
@@ -29,7 +29,7 @@ function App() {
       }),
     );
     setInputValue('');
-    setEditButtonValue('');
+    setEditingIdValue('');
   };
 
   const deleteTask = (id: string) => {
@@ -44,12 +44,12 @@ function App() {
         inputValue={inputValue}
         setInputValue={setInputValue}
         editTask={editTask}
-        editButtonValue={editButtonValue}
+        editingIdValue={editingIdValue}
       />
       <TaskDashboard
         taskList={taskList}
         deleteTask={deleteTask}
-        editButtonValue={editButtonValue}
+        editingIdValue={editingIdValue}
         startEditing={startEditing}
         editTask={editTask}
       />
