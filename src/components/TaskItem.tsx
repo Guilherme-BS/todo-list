@@ -3,7 +3,7 @@ import React from 'react';
 interface TaskItemProps {
   taskName: string;
   deleteTask: () => void;
-  editButtonValue: string;
+  editingIdValue: string;
   id: string;
   startEditing: () => void;
   editTask: () => void;
@@ -12,7 +12,7 @@ interface TaskItemProps {
 export default function TaskItem({
   taskName,
   deleteTask,
-  editButtonValue,
+  editingIdValue,
   id,
   startEditing,
   editTask,
@@ -27,9 +27,9 @@ export default function TaskItem({
         <button
           type="button"
           className="btn"
-          onClick={editButtonValue === id ? editTask : startEditing}
+          onClick={editingIdValue === id ? editTask : startEditing}
         >
-          {editButtonValue === id ? 'Save' : 'Edit'}
+          {editingIdValue === id ? 'Save' : 'Edit'}
           <span className="visually-hidden" />
         </button>
         <button type="button" className="btn btn__danger" onClick={deleteTask}>

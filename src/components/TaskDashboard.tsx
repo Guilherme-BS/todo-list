@@ -13,7 +13,7 @@ interface TaskDashboardProps {
 function TaskDashboard({
   taskList,
   deleteTask,
-  editingIdValue: editButtonValue,
+  editingIdValue,
   startEditing,
   editTask,
 }: TaskDashboardProps) {
@@ -46,7 +46,7 @@ function TaskDashboard({
             key={task.id}
             taskName={task.value}
             deleteTask={() => deleteTask(task.id)}
-            editButtonValue={editButtonValue}
+            editingIdValue={editingIdValue}
             id={task.id}
             startEditing={() => startEditing(task.id, task.value)}
             editTask={() => editTask(task.id)}
