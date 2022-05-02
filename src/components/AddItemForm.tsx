@@ -2,7 +2,7 @@ import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 interface AddItemFormsProps {
-  addTask: (task: string, newKey: string) => void;
+  addTask: (task: string, newKey: string, check: boolean) => void;
   inputValue: string;
   setInputValue: (value: string) => void;
   editTask: (value: string) => void;
@@ -13,16 +13,16 @@ function AddItemForm({
   inputValue,
   setInputValue,
   editTask,
-  editingIdValue: editButtonValue,
+  editingIdValue,
 }: AddItemFormsProps) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (editButtonValue.length > 0) {
-      editTask(editButtonValue);
+    if (editingIdValue.length > 0) {
+      editTask(editingIdValue);
       return;
     }
     if (inputValue.length > 0) {
-      addTask(inputValue, uuidv4());
+      addTask(inputValue, uuidv4(), false);
       setInputValue('');
     }
   };
@@ -44,7 +44,7 @@ function AddItemForm({
         onChange={(e) => setInputValue(e.target.value)}
       />
       <button type="submit" className="btn btn__primary btn__lg">
-        {editButtonValue.length > 0 ? 'Save' : 'Add Task'}
+        {editingIdValue.length > 0 ? 'Save' : 'Add Task'}
       </button>
     </form>
   );

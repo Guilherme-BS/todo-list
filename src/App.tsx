@@ -10,8 +10,8 @@ function App() {
   const [editingIdValue, setEditingIdValue] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
 
-  const addTask = (task: string, newKey: string): void => {
-    setTaskList([...taskList, { value: task, id: newKey }]);
+  const addTask = (task: string, newKey: string, check: boolean): void => {
+    setTaskList([...taskList, { value: task, id: newKey, check: false }]);
   };
 
   const startEditing = (id: string, task: string) => {
@@ -36,6 +36,17 @@ function App() {
     setTaskList(taskList.filter((taskObject) => taskObject.id !== id));
   };
 
+  const handleCheck = (id: string) => {
+    setTaskList(
+      taskList.map((task) => {
+        if (task.id === id) {
+          return { ...task, check: !task.check };
+        }
+        return task;
+      }),
+    );
+  };
+
   return (
     <div className="todoapp stack-large">
       <Title />
@@ -52,6 +63,7 @@ function App() {
         editingIdValue={editingIdValue}
         startEditing={startEditing}
         editTask={editTask}
+        handleCheck={handleCheck}
       />
     </div>
   );
