@@ -10,8 +10,8 @@ function App() {
   const [editingIdValue, setEditingIdValue] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
 
-  const addTask = (task: string, newKey: string, check: boolean): void => {
-    setTaskList([...taskList, { value: task, id: newKey, check: false }]);
+  const addTask = (task: string, newKey: string): void => {
+    setTaskList([...taskList, { value: task, id: newKey, checked: false }]);
   };
 
   const startEditing = (id: string, task: string) => {
@@ -40,7 +40,7 @@ function App() {
     setTaskList(
       taskList.map((task) => {
         if (task.id === id) {
-          return { ...task, check: !task.check };
+          return { ...task, checked: !task.checked };
         }
         return task;
       }),

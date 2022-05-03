@@ -2,7 +2,7 @@ import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 interface AddItemFormsProps {
-  addTask: (task: string, newKey: string, check: boolean) => void;
+  addTask: (task: string, newKey: string) => void;
   inputValue: string;
   setInputValue: (value: string) => void;
   editTask: (value: string) => void;
@@ -22,7 +22,7 @@ function AddItemForm({
       return;
     }
     if (inputValue.length > 0) {
-      addTask(inputValue, uuidv4(), false);
+      addTask(inputValue, uuidv4());
       setInputValue('');
     }
   };

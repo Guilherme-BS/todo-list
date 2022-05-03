@@ -10,6 +10,7 @@ interface TaskDashboardProps {
   editTask: (value: string) => void;
   handleCheck: (value: string) => void;
 }
+type SelectFilter = 'All' | 'Active' | 'Complete';
 
 function TaskDashboard({
   taskList,
@@ -19,19 +20,23 @@ function TaskDashboard({
   editTask,
   handleCheck,
 }: TaskDashboardProps) {
-  const [taskBoardRender, setTaskBoardRender] = useState([...taskList]);
-  const [filterName, setFilterName] = useState('All');
+  const [taskBoardRender, setTaskBoardRender] = useState<ITask[]>(taskList);
+  const [filterName, setFilterName] = useState<SelectFilter>('All');
+
   const handleFilter = () => {
-    if (filterName === 'All') {
-      setTaskBoardRender(taskList);
-    } else if (filterName === 'Active') {
-      setTaskBoardRender(
-        taskList.filter((taskObject) => taskObject.check === false),
-      );
-    } else {
-      setTaskBoardRender(
-        taskList.filter((taskObject) => taskObject.check === true),
-      );
+    switch (filterName) {
+      case 'Active':
+        setTaskBoardRender(
+          taskList.filter((taskObject) => taskObject.checked === false),
+        );
+        break;
+      case 'Complete':
+        setTaskBoardRender(
+          taskList.filter((taskObject) => taskObject.checked === true),
+        );
+        break;
+      default:
+        setTaskBoardRender(taskList);
     }
   };
 
@@ -81,7 +86,7 @@ function TaskDashboard({
             deleteTask={() => deleteTask(task.id)}
             editingIdValue={editingIdValue}
             id={task.id}
-            check={task.check}
+            checked={task.checked}
             startEditing={() => startEditing(task.id, task.value)}
             editTask={() => editTask(task.id)}
             handleCheck={() => handleCheck(task.id)}

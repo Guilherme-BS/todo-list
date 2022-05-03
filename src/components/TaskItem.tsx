@@ -8,7 +8,7 @@ interface TaskItemProps {
   startEditing: () => void;
   editTask: () => void;
   handleCheck: () => void;
-  check: boolean;
+  checked: boolean;
 }
 
 export default function TaskItem({
@@ -19,7 +19,7 @@ export default function TaskItem({
   startEditing,
   editTask,
   handleCheck,
-  check,
+  checked: check,
 }: TaskItemProps) {
   return (
     <li className="todo-stack-small">
