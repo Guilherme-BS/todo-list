@@ -19,12 +19,12 @@ export default function TaskItem({
   startEditing,
   editTask,
   handleCheck,
-  checked: check,
+  checked,
 }: TaskItemProps) {
   return (
     <li className="todo-stack-small">
       <div className="c-cb">
-        <input type="checkbox" onChange={handleCheck} checked={check} />
+        <input type="checkbox" onChange={handleCheck} checked={checked} />
         <label className="todo-p">{taskName}</label>
       </div>
       <div className="btn-group">
