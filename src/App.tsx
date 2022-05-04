@@ -11,7 +11,7 @@ function App() {
   const [inputValue, setInputValue] = useState<string>('');
 
   const addTask = (task: string, newKey: string): void => {
-    setTaskList([...taskList, { value: task, id: newKey }]);
+    setTaskList([...taskList, { value: task, id: newKey, checked: false }]);
   };
 
   const startEditing = (id: string, task: string) => {
@@ -36,6 +36,17 @@ function App() {
     setTaskList(taskList.filter((taskObject) => taskObject.id !== id));
   };
 
+  const handleCheck = (id: string) => {
+    setTaskList(
+      taskList.map((task) => {
+        if (task.id === id) {
+          return { ...task, checked: !task.checked };
+        }
+        return task;
+      }),
+    );
+  };
+
   return (
     <div className="todoapp stack-large">
       <Title />
@@ -52,6 +63,7 @@ function App() {
         editingIdValue={editingIdValue}
         startEditing={startEditing}
         editTask={editTask}
+        handleCheck={handleCheck}
       />
     </div>
   );

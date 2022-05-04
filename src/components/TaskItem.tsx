@@ -7,6 +7,8 @@ interface TaskItemProps {
   id: string;
   startEditing: () => void;
   editTask: () => void;
+  handleCheck: () => void;
+  checked: boolean;
 }
 
 export default function TaskItem({
@@ -16,11 +18,13 @@ export default function TaskItem({
   id,
   startEditing,
   editTask,
+  handleCheck,
+  checked,
 }: TaskItemProps) {
   return (
     <li className="todo-stack-small">
       <div className="c-cb">
-        <input type="checkbox" />
+        <input type="checkbox" onChange={handleCheck} checked={checked} />
         <label className="todo-p">{taskName}</label>
       </div>
       <div className="btn-group">
