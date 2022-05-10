@@ -1,20 +1,10 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { useTodoContext } from '../context/TodoContext';
 
-interface AddItemFormsProps {
-  addTask: (task: string, newKey: string) => void;
-  inputValue: string;
-  setInputValue: (value: string) => void;
-  editTask: (value: string) => void;
-  editingIdValue: string;
-}
-function AddItemForm({
-  addTask,
-  inputValue,
-  setInputValue,
-  editTask,
-  editingIdValue,
-}: AddItemFormsProps) {
+function AddItemForm() {
+  const { addTask, editTask, inputValue, editingIdValue, setInputValue } =
+    useTodoContext();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (editingIdValue.length > 0) {

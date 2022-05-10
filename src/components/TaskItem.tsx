@@ -1,42 +1,44 @@
 import React from 'react';
+import { useTodoContext } from '../context/TodoContext';
+import { ITask } from '../types';
 
 interface TaskItemProps {
-  taskName: string;
-  deleteTask: () => void;
-  editingIdValue: string;
-  id: string;
-  startEditing: () => void;
-  editTask: () => void;
-  handleCheck: () => void;
-  checked: boolean;
+  task: ITask;
 }
 
 export default function TaskItem({
-  taskName,
-  deleteTask,
-  editingIdValue,
-  id,
-  startEditing,
-  editTask,
-  handleCheck,
-  checked,
+  task: { value, id, checked },
 }: TaskItemProps) {
+  const { deleteTask, startEditing, editTask, handleCheck, editingIdValue } =
+    useTodoContext();
   return (
     <li className="todo-stack-small">
       <div className="c-cb">
-        <input type="checkbox" onChange={handleCheck} checked={checked} />
-        <label className="todo-p">{taskName}</label>
+        <input
+          type="checkbox"
+          onChange={() => handleCheck(id)}
+          checked={checked}
+        />
+        <label className="todo-p">{value}</label>
       </div>
       <div className="btn-group">
         <button
           type="button"
           className="btn"
-          onClick={editingIdValue === id ? editTask : startEditing}
+          onClick={
+            editingIdValue === id
+              ? () => editTask(id)
+              : () => startEditing(id, value)
+          }
         >
           {editingIdValue === id ? 'Save' : 'Edit'}
           <span className="visually-hidden" />
         </button>
-        <button type="button" className="btn btn__danger" onClick={deleteTask}>
+        <button
+          type="button"
+          className="btn btn__danger"
+          onClick={() => deleteTask(id)}
+        >
           Delete <span className="visually-hidden" />
         </button>
       </div>
