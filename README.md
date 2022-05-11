@@ -46,7 +46,7 @@ E como não podia faltar utilizamos também o [GitHub](https://www.remessaonline
 
 Para rodar esse projeto localmente e necessário ter alguns requezitos cumpridos como:
 
-- Node.js 12.22.0 ou versão superior.  Caso não tenha O NodeJs instalado [clique aqui](https://nodejs.org/ pt-br/download/) para instalá-lo.
+- Node.js 12.22.0 ou versão superior.  Caso não tenha O NodeJs instalado [clique aqui](https://nodejs.org/pt-br/download/) para instalá-lo.
 - Git . Caso não tenha o Git instalado[clique aqui](https://git-scm.com/)
 - [Clonar](git@github.com:Guilherme-BS/todo-list.git) o repositório do projeto.
 Para clonar o repositório basta abrir o terminal, navegar até o local desejado e rodar o comando
