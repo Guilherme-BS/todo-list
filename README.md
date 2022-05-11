@@ -78,7 +78,6 @@ para iniciar a aplicação.
 # Link do projeto:
 Mas caso você não tenha interesse ou não esteja disposto a cumprir os requisitos, aqui esta o link para ver o projeto hospedado no Git Hub pages.
 #### [Todo-List](https://guilherme-bs.github.io/todo-list/)
-.
 
 # Possiveis melhorias futuras:
 - A construção de um Back-End constituído de uma api rest para possibilitar salvar e consumir os dados da página
