@@ -1,6 +1,6 @@
 # Todo-List
 
-Olá, este e um projeto idealizado pela [PODCODAR CODE SCHOOL](https://podcodar.com/), visando aprimorar conhecimentos em:
+Olá, este é um projeto idealizado pela [PODCODAR CODE SCHOOL](https://podcodar.com/), visando aprimorar conhecimentos em:
   - Git
   - ReactTs
   - DevOps
@@ -11,7 +11,7 @@ Visto isso, foi proposto o desenvolvimento de uma Todo-List com as funcionalidad
 
 # Objetivos:
 
-O objetivo principal desse projeto se consiste em desenvolver e aprimorar habilidades técnicas e soft skills, usando para isso algumas práticas e metodologias como: trabalho em equipe, code review, one a one com os líderes, pair programming e  metodologia scrum.
+O objetivo principal desse projeto consiste em desenvolver e aprimorar habilidades técnicas e soft skills, usando para isso algumas práticas e metodologias como: trabalho em equipe, code review, one a one com os líderes, pair programming e metodologia scrum.
 
 ### Pré-requisitos para executar esse projeto localmente.
 
